@@ -3,8 +3,10 @@
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
 
+
 const ApiError  = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
+const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
 
 
 
@@ -15,7 +17,7 @@ const authenticate = catchAsync(async (req, res, next) => {
   }
   token = token.substring("Bearer ".length);
   try {
-    const decoded = jwt.verify(token, process.env (JWT_ACCESS_SECRET));
+    const decoded = jwt.verify(token, JWT_ACCESS_SECRET);
     req.user = decoded.user;
     next();
   } catch (err) {

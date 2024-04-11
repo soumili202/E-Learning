@@ -1,6 +1,8 @@
 const express = require('express');
 const connect = require('./connect');
 const authroute = require('./routes/auth.route');
+const adminroute = require('./routes/admin.route');
+const courseroute = require('./routes/courses.route');
 const router = express.Router();
 const createuser = require('./create_users');
 const {authenticate,adminauthenticate} = require('./middleware/authmiddleware');
@@ -16,6 +18,9 @@ app.get('/', (req, res) => {
 connect();
 app.use(express.json());
 app.use("/auth",authroute);
+app.use("/admin",authenticate,adminauthenticate,adminroute);
+app.use("/courses",courseroute);
+
 //app.use('/users', router);
 app.delete ('/delete',(req,res)=>{
     createuser.deleteUser();
