@@ -4,13 +4,14 @@ const ApiError = require('../utils/ApiError');
 
 
 const enrollCourse = async (courseId, userId) => {
-    const check = await db.userCourseEnrollment.findUnique({
+    const check = await db.userCourseEnrollment.findFirst({
         where:
-        {
+        {            
             userId,
             courseId
         }
-    })
+    
+    });
     if (check){
         throw new ApiError(httpStatus.FORBIDDEN,"Already Enrolled")
     }
