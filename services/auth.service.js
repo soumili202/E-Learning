@@ -1,10 +1,12 @@
 const { db } = require('../utils/db');
 const bcrypt = require('bcrypt');
+const {Resend} = require('resend')
 const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
+const RESEND_KEY = process.env.RESEND_KEY;
 const EXPIRES_IN = process.env.EXPIRES_IN;
 
 const signup = async (name,email,password)=> {
@@ -39,6 +41,13 @@ const signup = async (name,email,password)=> {
         token: token
     };
     console.log(response);
+    const resend = new Resend(RESEND_KEY);
+    resend.emails.send({
+        from: 'elearning@soumilimukherjeekgpian.me',
+        to: newUser.email,
+        subject: 'Welcome to the E-Learning App',
+        html: `<h1>Hi ${newUser.name},</h1><p>You have successfully registered to E-Learning App</p>`,
+    });
     return response;
     
 }
