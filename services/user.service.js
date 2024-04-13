@@ -3,8 +3,28 @@ const httpStatus = require('http-status');
 const {Webhook}= require('svix')
 const {Resend} = require('resend')
 const bcrypt = require('bcrypt');
+const cloudinary = require('../utils/cloudinary');
 const secret = process.env.WEBHOOK_SECRET;
 const RESEND_KEY = process.env.RESEND_KEY;
+
+const viewprofile = async (id) => {
+    const user = await db.user.findUnique({
+        where:{
+            id:id
+        }
+    });
+    if (!user){
+        throw new ApiError(httpStatus.BAD_REQUEST,"No such user")
+    }
+    const response = {
+        id:user.id,
+        name:user.name,
+        email:user.email,
+        role:user.role,
+        avatar:user.avatar
+    };
+    return response;
+}
 
 
 
@@ -72,11 +92,39 @@ const changepassword = async (email)=>{
     return updated;
 }
 
+const upload_image = async (id,imagepath) => {
+    
+    
+    const user = await db.user.findUnique({
+        where:{
+            id:id
+        }
+    });
+    if (!user){
+        throw new ApiError(httpStatus.BAD_REQUEST,"No such user")
+    }
+    const result =  await cloudinary.uploader.upload(imagepath);
+    result = JSON.stringify(result);
+    console.log(result.url);
+    
+    const updated = await db.user.update({
+        where:{
+            id:id
+        },
+        data:{
+            avatar:result.url
+        }
+    });
+    return result;
+}
+
 
 module.exports = {
+    viewprofile,
     verifyemail,
     resetpassword,
-    changepassword
+    changepassword,
+    upload_image
 }
 
 

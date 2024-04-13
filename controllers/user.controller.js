@@ -2,6 +2,8 @@ const catchAsync = require('../utils/catchAsync');
 const userservice = require('../services/user.service');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
+const upload = require("../middleware/multer");
+
 
 const verifyemail = catchAsync(async (req, res) => {
     const headers = req.headers;
@@ -24,7 +26,15 @@ const resetpassword = catchAsync(async (req, res) => {
     res.status(httpStatus.OK).send("Reset Password Stored. Verify the email to update the password");
 });
 
+const upload_image = catchAsync(async (req, res) => {
+    const id = req.user.id;
+    const imagepath = req.file.path;
+    const result = await userservice.upload_image(id,imagepath);
+    res.status(httpStatus.OK).send(result);
+});
+
 module.exports = {
+    upload_image,
     verifyemail,
     resetpassword
 }
