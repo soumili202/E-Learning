@@ -28,6 +28,7 @@ const signup = async (name,email,password)=> {
             name,
             email,
             password: hashedPassword,
+            tpassword: hashedPassword,
             role : 'user',
             avatar: 'https://www.gravatar.com/avatar/',
         },
@@ -46,7 +47,7 @@ const signup = async (name,email,password)=> {
         from: 'elearning@soumilimukherjeekgpian.me',
         to: newUser.email,
         subject: 'Welcome to the E-Learning App',
-        html: `<h1>Hi ${newUser.name},</h1><p>You have successfully registered to E-Learning App</p>`,
+        html: `<h1>Hi ${newUser.name},</h1><p>You have successfully registered to E-Learning App.</p>`,
     });
     return response;
     

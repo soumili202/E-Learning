@@ -6,7 +6,7 @@ const deleteUser= async ()=> {
 try{
     //delete all users from db
 
-    const user = await db.user.delete({where: {email:"subhamoy.mukherjee75@gmail.com" }});
+    const user = await db.user.delete({where: {email:"soumilirupsa2020@gmail.com" }});
     console.log(' deleted');
 }
 catch(e){
