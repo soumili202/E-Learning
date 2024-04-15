@@ -65,7 +65,7 @@ const resetpassword = async (email,password)=>{
         from: 'elearning@soumilimukherjeekgpian.me',
         to: email,
         subject: 'Request To Reset Password',
-        html: `<h1>Hi ${user.name},</h1><p>There has been a request to reset your password at E-Learning.</p><p> Click here to verify it was you <a href="https://resend.com/docs/dashboard/webhooks/verify-webhooks-requests">Verify</a></p>`,
+        html: `<h1>Hi ${user.name},</h1><p>There has been a request to reset your password at E-Learning.</p><p> Click here to verify it was you <a href="https://static.vecteezy.com/system/resources/thumbnails/012/080/644/small/green-verified-logo-badge-with-shield-vector.jpg">Verify</a></p>`,
     });
 
     return updated;
