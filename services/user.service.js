@@ -104,7 +104,7 @@ const upload_image = async (id,imagepath) => {
         throw new ApiError(httpStatus.BAD_REQUEST,"No such user")
     }
     const result =  await cloudinary.uploader.upload(imagepath);
-    result = JSON.stringify(result);
+    //result = JSON.stringify(result);
     console.log(result.url);
     
     const updated = await db.user.update({

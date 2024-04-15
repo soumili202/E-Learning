@@ -4,6 +4,13 @@ const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const upload = require("../middleware/multer");
 
+const viewprofile = catchAsync(async (req, res) => {
+    const id = req.user.id;
+    const profile = await userservice.viewprofile(id);
+    res.status(httpStatus.OK).send(profile);
+}
+);
+
 
 const verifyemail = catchAsync(async (req, res) => {
     const headers = req.headers;
@@ -34,6 +41,7 @@ const upload_image = catchAsync(async (req, res) => {
 });
 
 module.exports = {
+    viewprofile,
     upload_image,
     verifyemail,
     resetpassword
