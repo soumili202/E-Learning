@@ -1,4 +1,5 @@
 # E-Learning
+[Task for Internship]
 ## Description
 This is a simple e-learning platform that allows users to create, read, update and delete courses. Users can also enroll in courses and view their progress. The platform is built using Node.js, Express.js, Prisma(PostgreSQL).
 ## Features
