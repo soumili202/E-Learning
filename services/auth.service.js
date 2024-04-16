@@ -5,9 +5,10 @@ const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
-const RESEND_KEY = process.env.RESEND_KEY;
-const EXPIRES_IN = process.env.EXPIRES_IN;
+const config = require('../config');
+const JWT_ACCESS_SECRET = config.JWT_ACCESS_SECRET;
+const RESEND_KEY = config.RESEND_KEY;
+const EXPIRES_IN = config.EXPIRES_IN;
 
 const signup = async (name,email,password)=> {
     

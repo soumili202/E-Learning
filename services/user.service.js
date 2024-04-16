@@ -4,8 +4,9 @@ const {Webhook}= require('svix')
 const {Resend} = require('resend')
 const bcrypt = require('bcrypt');
 const cloudinary = require('../utils/cloudinary');
-const secret = process.env.WEBHOOK_SECRET;
-const RESEND_KEY = process.env.RESEND_KEY;
+const config = require('../config');
+const secret = config.WEBHOOK_SECRET;
+const RESEND_KEY = config.RESEND_KEY;
 
 const viewprofile = async (id) => {
     const user = await db.user.findUnique({

@@ -2,11 +2,12 @@
 
 const httpStatus = require('http-status');
 const jwt = require('jsonwebtoken');
+const config = require('../config');
 
 
 const ApiError  = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
+const JWT_ACCESS_SECRET = config.JWT_ACCESS_SECRET;
 
 
 

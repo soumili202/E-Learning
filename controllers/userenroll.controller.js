@@ -3,7 +3,8 @@ const userenrollService = require('../services/userenroll.service');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const {Resend} = require('resend')
-const RESEND_KEY = process.env.RESEND_KEY;
+const config = require('../config');
+const RESEND_KEY = config.RESEND_KEY;
 
 
 const enrollCourse = catchAsync(async (req, res, next) => {
