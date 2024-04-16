@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "prisma": "prisma generate",
-    "start": "npm run prisma; node index.js"
+    "prisma": "",
+    "start": "prisma generate && node index.js"
   },
   "author": "",
   "license": "ISC",
