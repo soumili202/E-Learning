@@ -14,7 +14,7 @@ const createuser = require('./create_users');
 const {authenticate,adminauthenticate} = require('./middleware/authmiddleware');
 const config = require('./config');
 const app = express();
-const port = config.PORT || 3000;
+const port = 8080;
 app.get('/', (req, res) => {
     res.send('Hello World!');
     }
