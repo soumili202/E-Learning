@@ -12,8 +12,9 @@ const cors = require('cors');
 const router = express.Router();
 const createuser = require('./create_users');
 const {authenticate,adminauthenticate} = require('./middleware/authmiddleware');
+const config = require('./config');
 const app = express();
-const port = 3000;
+const port = config.PORT || 3000;
 app.get('/', (req, res) => {
     res.send('Hello World!');
     }
