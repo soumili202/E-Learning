@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "prisma": "npx prisma generate || prisma generate",
-    "start": "npm run prisma && node index.js"
+    "prisma": "prisma generate",
+    "start": "npm run prisma; node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -25,7 +25,8 @@
     "nodemon": "^3.1.0",
     "resend": "^3.2.0",
     "svix": "^1.21.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "prisma": "^5.12.1"
   },
   "devDependencies": {
     "prisma": "^5.12.1"
