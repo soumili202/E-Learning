@@ -29,12 +29,22 @@ CLOUDINARY_SECRET=
 CLOUDINARY_NAME=
 
 ```
-
-4. Run the application
+4. Run the application locally
 ```bash
 npm run dev
 ```
+### Deployment
+
+5. Deployed on DigitalOcean
+```bash 
+ https://plankton-app-ihawp.ondigitalocean.app
+```
+6. Hosted on namecheap domain
+```bash
+https://elearn.soumilimukherjeekgpian.me
+```
 ## API Documentation
+The API documentation can be found [here](https://documenter.getpostman.com/view/28016394/2sA3BoZrAe)
 
 
 

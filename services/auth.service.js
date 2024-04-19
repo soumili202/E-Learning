@@ -4,7 +4,6 @@ const {Resend} = require('resend')
 const jwt = require('jsonwebtoken');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
-const catchAsync = require('../utils/catchAsync');
 const config = require('../config');
 const JWT_ACCESS_SECRET = config.JWT_ACCESS_SECRET;
 const RESEND_KEY = config.RESEND_KEY;
