@@ -1,0 +1,29 @@
+import asyncio
+from types import MethodType
+
+async def astream_with_usage(self, messages):
+    """Monkey-patched method to stream + capture final token usage."""
+    full_text = ""
+    final_usage = None
+
+    async for event in self.astream_events(messages, version="v1"):
+        kind = event["event"]
+        if kind == "on_llm_new_token":
+            token = event["data"]["token"]
+            print(token, end="", flush=True)
+            full_text += token
+
+        elif kind == "on_llm_end":
+            final_usage = event["data"].get("usage")
+
+    return full_text, final_usage
+
+# patch the method dynamically
+llm.astream_with_usage = MethodType(astream_with_usage, llm)
+
+# use it
+async def main():
+    content, usage = await llm.astream_with_usage("Explain 2 + 2 = ?")
+    print("\n\nToken usage:", usage)
+
+asyncio.run(main())
